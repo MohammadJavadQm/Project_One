@@ -1,11 +1,3 @@
-/* ===================================
-    Cyberpunk Neon LTR CSS - Max Neon Overload
-    Author: Mohammad Javad Dehfroz
-    Enhanced by: Gemini
-    Direction: LTR (Left-to-Right)
-    =================================== */
-
-/* --- Variables (UPGRADED) --- */
 :root {
     --clr-bg: #03000b; /* Deep Space Black */
     --clr-bg-alt: #0d011f; /* Dark Purple-Blue */
@@ -26,8 +18,8 @@
 
     /* INTENSIFIED NEON SHADOWS */
     --shadow-neon-primary: 0 0 10px var(--clr-primary),
-                           0 0 25px var(--clr-primary),
-                           0 0 50px rgba(0, 255, 159, 0.6);
+                            0 0 25px var(--clr-primary),
+                            0 0 50px rgba(0, 255, 159, 0.6);
     --shadow-neon-secondary: 0 0 8px var(--clr-secondary),
                               0 0 20px var(--clr-secondary),
                               0 0 40px rgba(255, 0, 200, 0.7);
@@ -315,3 +307,186 @@ button { all: unset; cursor: pointer; }
 }
 .metric-item .value { font-size: 1.5rem; font-weight: bold; color: var(--clr-accent); }
 .metric-item .label { font-size: 0.9rem; color: var(--clr-muted); }
+
+/* --- Skills (LTR ADJUSTMENTS) --- */
+.skills-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.skill-card {
+    background: var(--clr-bg-alt);
+    padding: 2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+.skill-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: var(--shadow-neon-primary);
+    border-color: var(--clr-primary);
+}
+.skill-card i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--clr-primary); transition: var(--transition); }
+.skill-card:hover i { color: var(--clr-tertiary); text-shadow: 0 0 10px var(--clr-tertiary); transform: scale(1.2); }
+.skill-card h3 { color: var(--clr-accent); }
+.skill-card p { color: var(--clr-muted); }
+
+/* --- Decorative Corners for Cards (LTR ADJUSTMENTS) --- */
+.skill-card::before, .skill-card::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    transition: var(--transition);
+    opacity: 0;
+}
+.skill-card::before {
+    top: 5px;
+    /* 🔴 CHANGED: From right: 5px to left: 5px */
+    left: 5px;
+    /* 🔴 CHANGED: Swapped right to left border */
+    border-top: 3px solid var(--clr-accent);
+    border-left: 3px solid var(--clr-accent);
+}
+.skill-card::after {
+    bottom: 5px;
+    /* 🔴 CHANGED: From left: 5px to right: 5px */
+    right: 5px;
+    /* 🔴 CHANGED: Swapped left to right border */
+    border-bottom: 3px solid var(--clr-accent);
+    border-right: 3px solid var(--clr-accent);
+}
+.skill-card:hover::before, .skill-card:hover::after {
+    opacity: 1;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+/* --- Portfolio (UNCHANGED) --- */
+.portfolio-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.portfolio-card { position: relative; overflow: hidden; border-radius: var(--radius); border: 3px solid transparent; transition: var(--transition); }
+.portfolio-card:hover { border-color: var(--clr-secondary); box-shadow: var(--shadow-neon-secondary); }
+.portfolio-card img { width: 100%; display: block; border-radius: var(--radius); transition: var(--transition); }
+.portfolio-card:hover img { transform: scale(1.2) rotate(-1deg); filter: brightness(0.2) blur(3px); }
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: var(--transition);
+    background: linear-gradient(135deg, rgba(0, 255, 159, 0.4), rgba(255, 0, 200, 0.4));
+    backdrop-filter: blur(1px);
+}
+.portfolio-card:hover .card-overlay { opacity: 1; }
+.project-tag { font-size: 0.9rem; color: var(--clr-tertiary); margin-bottom: 0.5rem; text-shadow: 0 0 5px var(--clr-tertiary); }
+.project-link { margin-top: 1.5rem; color: var(--clr-primary); font-weight: bold; text-shadow: 0 0 5px var(--clr-primary); }
+
+/* --- Contact (UNCHANGED) --- */
+.contact-intro { text-align: center; margin-bottom: 3rem; color: var(--clr-muted); }
+.contact-links-container { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.contact-card {
+    background: var(--clr-bg-alt);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid var(--clr-muted);
+}
+.contact-card:hover {
+    box-shadow: var(--shadow-neon-accent);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--clr-accent);
+    background: linear-gradient(45deg, var(--clr-bg-alt), rgba(0, 224, 255, 0.1));
+}
+.contact-card i { font-size: 2rem; color: var(--clr-accent); margin-bottom: 0.75rem; text-shadow: 0 0 8px var(--clr-accent); }
+.contact-card a { color: var(--clr-light); font-size: 1.1rem; }
+.contact-card:hover a { color: var(--clr-tertiary); }
+
+/* --- Footer (LTR ADJUSTMENTS) --- */
+.system-footer {
+    background: var(--clr-bg-alt);
+    padding: 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid var(--clr-secondary);
+    box-shadow: 0 0 15px rgba(255, 0, 200, 0.4);
+}
+.footer-text { font-size: 0.9rem; color: var(--clr-muted); }
+.scroll-top-btn {
+    position: absolute;
+    top: -2rem;
+    /* 🔴 CHANGED: From left: 2rem to right: 2rem */
+    right: 2rem;
+    left: unset;
+    background: var(--clr-secondary);
+    color: var(--clr-bg);
+    border-radius: 50%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-neon-secondary);
+    transition: var(--transition);
+    border: 2px solid var(--clr-bg);
+}
+.scroll-top-btn:hover {
+    transform: translateY(-6px) scale(1.15) rotate(5deg);
+    box-shadow: 0 0 15px var(--clr-accent), 0 0 30px var(--clr-accent);
+    background: var(--clr-accent);
+}
+
+/* --- Responsive (LTR ADJUSTMENTS) --- */
+@media (max-width: 992px) {
+    .hero-section { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        padding-top: 8rem; 
+    }
+    .about-container { grid-template-columns: 1fr; }
+    
+    .circular-img {
+        width: 250px; 
+        height: 250px;
+        border-width: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .system-section { padding: 6rem 1.5rem; }
+    .action-buttons, .system-social-links { justify-content: center; }
+    .about-container { grid-template-columns: 1fr; }
+    .cyber-header { padding: 1rem 1.5rem; }
+
+    .cyber-nav {
+        position: absolute;
+        top: 100%;
+        /* 🔴 CHANGED: From right: 0 to left: 0 */
+        left: 0;
+        right: unset;
+        flex-direction: column;
+        background: rgba(13, 1, 31, 0.95);
+        width: 100%;
+        padding: 1rem 0;
+        transform: translateY(-200%);
+        transition: var(--transition);
+        /* 🔴 CHANGED: Adjusted border-radius for LTR menu */
+        border-radius: 0 0 var(--radius) var(--radius); 
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    .nav-link { text-align: center; padding: 0.5rem 0; }
+    .nav-link::after { 
+        left: 50%; 
+        /* 🔴 CHANGED: Removed RTL-specific right/left adjustments */
+        transform: translateX(-50%); 
+        bottom: -2px; 
+    }
+    .cyber-nav.show-menu { transform: translateY(0); }
+    .nav-toggle { display: block; }
+    
+    .circular-img {
+        width: 200px;
+        height: 200px;
+    }
+}
