@@ -51,3 +51,26 @@ function scrollActive() {
     });
 }
 window.addEventListener('scroll', scrollActive);
+
+ScrollReveal({
+    distance: '80px', 
+    duration: 2000,
+    delay: 150, 
+    easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)', 
+    reset: false 
+});
+
+ScrollReveal().reveal('.hero-content, .system-heading', { origin: 'right' });
+ScrollReveal().reveal('.hero-image-container, .about-image-frame', { origin: 'left', delay: 300 });
+ScrollReveal().reveal('.main-title, .role-title, .description-text', { origin: 'right', interval: 100 });
+ScrollReveal().reveal('.module-card, .repo-card, .connection-card', { interval: 120, origin: 'bottom' });
+
+const moduleCards = document.querySelectorAll('.module-card, .repo-card, .connection-card');
+moduleCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-1rem) scale(1.03) skewX(1deg)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = ''; 
+    });
+});
