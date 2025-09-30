@@ -1,0 +1,129 @@
+/* ===================================
+    Cyberpunk Neon LTR CSS - Max Neon Overload
+    Author: Mohammad Javad Dehfroz
+    Enhanced by: Gemini
+    Direction: LTR (Left-to-Right)
+    =================================== */
+
+/* --- Variables (UPGRADED) --- */
+:root {
+    --clr-bg: #03000b; /* Deep Space Black */
+    --clr-bg-alt: #0d011f; /* Dark Purple-Blue */
+    --clr-primary: #759936; /* Bright Cyber Green */
+    --clr-secondary: #9dff00; /* Vivid Magenta (Note: Color remains Magenta, but original comment was misleading) */
+    --clr-accent: #00e0ff; /* Electric Cyan */
+    --clr-tertiary: #ffc700; /* Neon Gold */
+    --clr-light: #f7e6ff; /* Off-White/Holo */
+    --clr-muted: #7d6b8f; /* Desaturated Purple */
+
+    /* 🟢 CHANGED FONT: Using standard English font */
+    --ff-main: "Roboto", sans-serif; 
+    --ff-mono: "Fira Code", "Courier New", Courier, monospace; /* Modern Mono Font */
+
+    --fs-h1: clamp(2.5rem, 6vw, 4.5rem);
+    --fs-h2: clamp(1.8rem, 5vw, 3rem);
+    --fs-body: clamp(1rem, 2vw, 1.15rem);
+
+    /* INTENSIFIED NEON SHADOWS */
+    --shadow-neon-primary: 0 0 10px var(--clr-primary),
+                           0 0 25px var(--clr-primary),
+                           0 0 50px rgba(0, 255, 159, 0.6);
+    --shadow-neon-secondary: 0 0 8px var(--clr-secondary),
+                              0 0 20px var(--clr-secondary),
+                              0 0 40px rgba(255, 0, 200, 0.7);
+    --shadow-neon-accent: 0 0 10px var(--clr-accent),
+                          0 0 20px var(--clr-accent),
+                          0 0 40px rgba(0, 224, 255, 0.5);
+
+    --radius: 0.5rem;
+    --transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- Keyframe Animations (UNCHANGED) --- */
+
+@keyframes pulse {
+    0%, 100% { text-shadow: var(--shadow-neon-primary); opacity: 1; }
+    50% { text-shadow: 0 0 15px var(--clr-primary), 0 0 30px var(--clr-primary), 0 0 80px var(--clr-primary); opacity: 0.85; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--clr-tertiary); } /* Changed to Gold */
+}
+
+@keyframes holographic { /* NEW SHIMMER EFFECT */
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Reset & Base (LTR ADJUSTMENTS) --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--ff-main);
+    font-size: var(--fs-body);
+    line-height: 1.8; /* Slightly more spacious */
+    color: var(--clr-light);
+    background: var(--clr-bg);
+    /* 🔴 CHANGED: Set to LTR */
+    direction: ltr; 
+    overflow-x: hidden;
+    position: relative;
+    /* 🔴 CHANGED: Set to LTR default text alignment */
+    text-align: left; 
+}
+
+/* --- Scan Lines Overlay (UNCHANGED) --- */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Darker, more noticeable lines blending primary and secondary */
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 159, 0.08),
+        rgba(255, 0, 200, 0.08) 1px,
+        rgba(3, 0, 11, 0.1) 1px, /* Transparent changed to a slight dark blend */
+        rgba(3, 0, 11, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6; /* Increased opacity */
+    mix-blend-mode: overlay; /* Added blend mode for effect */
+}
+
+img { max-width: 100%; display: block; border-radius: var(--radius); }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { all: unset; cursor: pointer; }
+
+/* --- Custom Scrollbar (UNCHANGED) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--clr-bg-alt);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--clr-secondary); /* Secondary color for thumb */
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--clr-secondary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--clr-accent);
+}
